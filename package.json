@@ -20,7 +20,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
-    "postbuild": "cp src/tokenlist.schema.json dist/tokenlist.schema.json",
+    "postbuild": "cp src/protectionmarketlist.schema.json dist/protectionmarketlist.schema.json",
     "test": "tsdx test",
     "lint": "tsdx lint src test",
     "prepublishOnly": "yarn test && yarn build"
