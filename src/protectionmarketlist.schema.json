@@ -1,0 +1,229 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "DivestScript": {
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "signature": {
+          "enum": [
+            "function divest(uint256[] amounts, address recipient, uint256[] claimRewards)"
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "InvestScript": {
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "signature": {
+          "enum": ["function invest(uint256[] amounts, uint256[] approve)"],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "InvestmentOpportunity": {
+      "properties": {
+        "dataURI": {
+          "type": "string"
+        },
+        "divest": {
+          "$ref": "#/definitions/DivestScript"
+        },
+        "invest": {
+          "$ref": "#/definitions/InvestScript"
+        },
+        "strategy": {
+          "items": {
+            "$ref": "#/definitions/StrategyLeg"
+          },
+          "type": "array"
+        },
+        "tokens": {
+          "properties": {
+            "input": {
+              "items": {
+                "$ref": "#/definitions/TokenInfo"
+              },
+              "type": "array"
+            },
+            "receipt": {
+              "items": {
+                "$ref": "#/definitions/TokenInfo"
+              },
+              "type": "array"
+            },
+            "rewards": {
+              "items": {
+                "$ref": "#/definitions/TokenInfo"
+              },
+              "type": "array"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "ProtectionMarketInfo": {
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "chainId": {
+          "type": "number"
+        },
+        "decimals": {
+          "type": "number"
+        },
+        "extensions": {
+          "additionalProperties": {
+            "type": ["null", "string", "number", "boolean"]
+          },
+          "type": "object"
+        },
+        "investmentOpportunity": {
+          "$ref": "#/definitions/InvestmentOpportunity"
+        },
+        "isTriggered": {
+          "type": "boolean"
+        },
+        "logoURI": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "symbol": {
+          "type": "string"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "trigger": {
+          "type": "string"
+        },
+        "underlying": {
+          "$ref": "#/definitions/TokenInfo"
+        }
+      },
+      "type": "object"
+    },
+    "StrategyLeg": {
+      "properties": {
+        "action": {
+          "enum": ["Borrow", "Deposit to", "Stake on"],
+          "type": "string"
+        },
+        "destination": {
+          "type": "number"
+        },
+        "logoURI": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Tags": {
+      "additionalProperties": {
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "object"
+    },
+    "TokenInfo": {
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "chainId": {
+          "type": "number"
+        },
+        "decimals": {
+          "type": "number"
+        },
+        "extensions": {
+          "additionalProperties": {
+            "type": ["null", "string", "number", "boolean"]
+          },
+          "type": "object"
+        },
+        "logoURI": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "symbol": {
+          "type": "string"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "Version": {
+      "properties": {
+        "major": {
+          "type": "number"
+        },
+        "minor": {
+          "type": "number"
+        },
+        "patch": {
+          "type": "number"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "properties": {
+    "keywords": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "logoURI": {
+      "type": "string"
+    },
+    "markets": {
+      "items": {
+        "$ref": "#/definitions/ProtectionMarketInfo"
+      },
+      "type": "array"
+    },
+    "name": {
+      "type": "string"
+    },
+    "tags": {
+      "$ref": "#/definitions/Tags"
+    },
+    "timestamp": {
+      "type": "string"
+    },
+    "version": {
+      "$ref": "#/definitions/Version"
+    }
+  },
+  "type": "object"
+}
