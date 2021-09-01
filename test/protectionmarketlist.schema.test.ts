@@ -1,6 +1,6 @@
 import Ajv from 'ajv';
 import { schema } from '../src';
-import exampleList from './schema/example.tokenlist.json';
+import exampleList from './schema/example.protectionmarketlist.json';
 import exampleNameSymbolSpecialCharacters from './schema/example-name-symbol-special-characters.tokenlist.json';
 import bigExampleList from './schema/bigexample.tokenlist.json';
 import exampleListMinimum from './schema/exampleminimum.tokenlist.json';
@@ -99,7 +99,7 @@ describe('schema', () => {
   it('allows up to 10k tokens', () => {
     const exampleListWith10kTokens = {
       ...exampleList,
-      tokens: [...Array(10000)].map(() => exampleList.tokens[0]),
+      markets: [...Array(10000)].map(() => exampleList.markets[0]),
     };
     checkSchema(exampleListWith10kTokens, true);
   });
@@ -107,7 +107,7 @@ describe('schema', () => {
   it('fails with 10001 tokens', () => {
     const exampleListWith10kTokensPlusOne = {
       ...exampleList,
-      tokens: [...Array(10001)].map(() => exampleList.tokens[0]),
+      markets: [...Array(10001)].map(() => exampleList.markets[0]),
     };
     checkSchema(exampleListWith10kTokensPlusOne, false);
   });

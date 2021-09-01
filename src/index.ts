@@ -1,4 +1,4 @@
-import schema from './tokenlist.schema.json';
+import schema from './protectionmarketlist.schema.json';
 
 export * from './types';
 export * from './isVersionUpdate';
