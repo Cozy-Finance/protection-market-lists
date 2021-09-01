@@ -38,11 +38,6 @@ export interface Tags {
 // to approve the spending contract for
 export interface InvestScript {
   readonly address: string;
-  readonly tokens: {
-    readonly input: TokenInfo[]; // tokens required to invest in this opportunity
-    readonly receipt: TokenInfo[]; // receipt tokens received for investing
-    readonly rewards: TokenInfo[]; // rewards tokens received for investing
-  };
   readonly signature?: 'function invest(uint256[] amounts, uint256[] approve)';
 }
 
@@ -54,25 +49,32 @@ export interface InvestScript {
 // tokens and reward tokens should be sent to
 export interface DivestScript {
   readonly address: string;
-  readonly tokens: {
-    readonly receipt: TokenInfo[]; // receipt tokens the user needs to exit this opportunity
-    readonly output: TokenInfo[]; // tokens the user will receive after exiting this opportunity
-    readonly rewards: TokenInfo[]; // rewards tokens the user may claim when exiting this opportunity
-  };
   readonly signature?: 'function divest(uint256[] amounts, address recipient, uint256[] claimRewards)';
 }
 
-export interface Data {
-  // TODO
+export interface StrategyLeg {
+  action: 'Borrow' | 'Deposit to' | 'Stake on'; // TODO add more
+  destination: number; // Platform ID of strategy target
+  logoURI?: string;
+}
+
+export interface InvestmentOpportunity {
+  readonly invest: InvestScript;
+  readonly divest: DivestScript;
+  readonly dataURI: string; // API endpoint to query for user data from, e.g. balances
+  readonly tokens: {
+    readonly input: TokenInfo[]; // tokens the user will deposit to enter this opportunity, and receipt upon exiting
+    readonly receipt: TokenInfo[]; // receipt tokens the user needs to exit this opportunity
+    readonly rewards: TokenInfo[]; // rewards tokens the user may claim when exiting this opportunity
+  };
+  readonly strategy?: StrategyLeg[];
 }
 
 export interface ProtectionMarketInfo extends TokenInfo {
   readonly underlying: TokenInfo; // if `underlying.address === 0xEeee....EEeE`, underlying is ETH
   readonly trigger: string; // trigger contract address for protection markets, or zero address for money markets
   readonly isTriggered: boolean; // true if this market was triggered
-  readonly invest?: InvestScript;
-  readonly divest?: DivestScript;
-  readonly data?: Data; // data-fetching spec from Notion
+  readonly investmentOpportunity?: InvestmentOpportunity; // details on how protected investing using this market
 }
 
 export interface ProtectionMarketList {
