@@ -49,7 +49,7 @@ export interface InvestScript {
 // tokens and reward tokens should be sent to
 export interface DivestScript {
   readonly address: string;
-  readonly signature?: 'function divest(uint256[] amounts, address recipient, uint256[] claimRewards)';
+  readonly signature?: 'function divest(uint256[] receiptAmounts, address recipient, uint256[] rewardAmounts)';
 }
 
 export interface StrategyLeg {
