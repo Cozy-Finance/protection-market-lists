@@ -6,7 +6,9 @@ import bigExampleList from './schema/bigexample.tokenlist.json';
 import exampleListMinimum from './schema/exampleminimum.tokenlist.json';
 import emptyList from './schema/empty.tokenlist.json';
 import bigWords from './schema/bigwords.tokenlist.json';
-import invalidTokenAddress from './schema/invalidtokenaddress.tokenlist.json';
+import invalidTokenAddress1 from './schema/invalidtokenaddress.1.tokenlist.json';
+import invalidTokenAddress2 from './schema/invalidtokenaddress.2.tokenlist.json';
+import invalidTriggerAddress from './schema/invalidtriggeraddress.tokenlist.json';
 import invalidTimestamp from './schema/invalidtimestamp.tokenlist.json';
 import invalidLogoURI1 from './schema/invalidlogouri.1.tokenlist.json';
 import invalidLogoURI2 from './schema/invalidlogouri.2.tokenlist.json';
@@ -16,6 +18,8 @@ import invalidVersion3 from './schema/invalidversion.3.tokenlist.json';
 import invalidDecimals1 from './schema/invaliddecimals.1.tokenlist.json';
 import invalidNumTags from './schema/invalidNumTags.tokenlist.json';
 import invalidDecimals2 from './schema/invaliddecimals.2.tokenlist.json';
+import invalidDecimals3 from './schema/invaliddecimals.3.tokenlist.json';
+import invalidDecimals4 from './schema/invaliddecimals.4.tokenlist.json';
 import extensionsValid from './schema/extensions-valid.tokenlist.json';
 import extensionsInvalid from './schema/extensions-invalid.tokenlist.json';
 import addFormats from 'ajv-formats';
@@ -64,7 +68,12 @@ describe('schema', () => {
   });
 
   it('checks token address', () => {
-    checkSchema(invalidTokenAddress, false);
+    checkSchema(invalidTokenAddress1, false);
+    checkSchema(invalidTokenAddress2, false);
+  });
+
+  it('checks trigger address', () => {
+    checkSchema(invalidTriggerAddress, false);
   });
 
   it('invalid timestamp', () => {
@@ -79,6 +88,8 @@ describe('schema', () => {
   it('invalid decimals', () => {
     checkSchema(invalidDecimals1, false);
     checkSchema(invalidDecimals2, false);
+    checkSchema(invalidDecimals3, false);
+    checkSchema(invalidDecimals4, false);
   });
 
   it('invalid number of tags on token', () => {

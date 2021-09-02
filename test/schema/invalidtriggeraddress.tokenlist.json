@@ -10,7 +10,7 @@
       "decimals": 8,
       "logoURI": "https://compound.finance/compound-components/assets/asset_YFI.svg",
       "tags": ["stablecoin", "protection market"],
-      "trigger": "0x02E57c5800a345Fe97d73fA8bB72B948E19aA499",
+      "trigger": "0x00000000000000000000000000000000000000_0",
       "isTriggered": false,
       "underlying": {
         "chainId": 1,
@@ -24,8 +24,8 @@
     }
   ],
   "version": {
-    "major": 0,
-    "minor": -1,
+    "major": 1,
+    "minor": 0,
     "patch": 0
   }
 }

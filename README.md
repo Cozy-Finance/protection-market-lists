@@ -28,7 +28,7 @@ test/
 ├── protectionmarketlist.schema.test               todo: update after updating all JSON files in the test/schema folder
 ├── types.test.ts                                  DONE
 ├── versionComparator.test.ts                      DONE
-├── schema/                                        todo: update all JSON files in this folder
+├── schema/                                        DONE
 │   ├── bigexample.tokenlist.json
 │   ├── bigwords.tokenlist.json
 │   ├── empty.tokenlist.json
