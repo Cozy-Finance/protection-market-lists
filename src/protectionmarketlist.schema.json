@@ -1,7 +1,109 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Protection Market List",
+  "description": "Schema for lists of markets compatible with the Cozy Protocol",
   "definitions": {
+    "Version": {
+      "type": "object",
+      "description": "The version of the list, used in change detection",
+      "examples": [
+        {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        }
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "major": {
+          "type": "integer",
+          "description": "The major version of the list. Must be incremented when tokens are removed from the list or token addresses are changed.",
+          "minimum": 0,
+          "examples": [1, 2]
+        },
+        "minor": {
+          "type": "integer",
+          "description": "The minor version of the list. Must be incremented when tokens are added to the list.",
+          "minimum": 0,
+          "examples": [0, 1]
+        },
+        "patch": {
+          "type": "integer",
+          "description": "The patch version of the list. Must be incremented for any changes to the list.",
+          "minimum": 0,
+          "examples": [0, 1]
+        }
+      },
+      "required": ["major", "minor", "patch"]
+    },
+    "TagIdentifier": {
+      "type": "string",
+      "description": "The unique identifier of a tag",
+      "minLength": 1,
+      "maxLength": 30,
+      "pattern": "^[\\w ]+$",
+      "examples": ["yearn", "stablecoin", "money market", "protection market"]
+    },
+    "ExtensionIdentifier": {
+      "type": "string",
+      "description": "The name of a market extension property",
+      "minLength": 1,
+      "maxLength": 30,
+      "pattern": "^[\\w ]+$",
+      "examples": ["is_audited", "is_triggered"]
+    },
+    "ExtensionValue": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 42,
+          "examples": ["#00000"]
+        },
+        {
+          "type": "boolean",
+          "examples": [true]
+        },
+        {
+          "type": "number",
+          "examples": [15]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "TagDefinition": {
+      "type": "object",
+      "description": "Definition of a tag that can be associated with a market via its identifier",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the tag",
+          "pattern": "^[ \\w]+$",
+          "minLength": 1,
+          "maxLength": 20
+        },
+        "description": {
+          "type": "string",
+          "description": "A user-friendly description of the tag",
+          "pattern": "^[ \\w\\.,:]+$",
+          "minLength": 1,
+          "maxLength": 200
+        }
+      },
+      "required": ["name", "description"],
+      "examples": [
+        {
+          "name": "Stablecoin",
+          "description": "A market that takes stablecoin deposits"
+        }
+      ]
+    },
     "DivestScript": {
+      "type": "object",
+      "description": "Parameters of the contract containing a `divest` method to exit an investment opportunity",
       "properties": {
         "address": {
           "type": "string"
@@ -12,10 +114,12 @@
           ],
           "type": "string"
         }
-      },
-      "type": "object"
+      }
     },
     "InvestScript": {
+      "type": "object",
+      "description": "Parameters of the contract containing an `invest` method to exit an investment opportunity",
+
       "properties": {
         "address": {
           "type": "string"
@@ -24,13 +128,15 @@
           "enum": ["function invest(uint256[] amounts, uint256[] approve)"],
           "type": "string"
         }
-      },
-      "type": "object"
+      }
     },
     "InvestmentOpportunity": {
+      "type": "object",
+      "description": "Properties required for detailing how a user can enter a protected investment after borrowing from the protection market",
       "properties": {
         "dataURI": {
-          "type": "string"
+          "type": "string",
+          "description": "API endpoint that can be queried to return market and user data about the investment opportunity"
         },
         "divest": {
           "$ref": "#/definitions/DivestScript"
@@ -39,191 +145,297 @@
           "$ref": "#/definitions/InvestScript"
         },
         "strategy": {
+          "type": "array",
           "items": {
             "$ref": "#/definitions/StrategyLeg"
-          },
-          "type": "array"
+          }
         },
         "tokens": {
+          "type": "object",
           "properties": {
             "input": {
+              "type": "array",
+              "description": "Array of one or more tokens a user must have to invest in this opportunity",
               "items": {
                 "$ref": "#/definitions/TokenInfo"
-              },
-              "type": "array"
+              }
             },
             "receipt": {
+              "type": "array",
+              "description": "Array of one or more tokens a user will receive after investing in this opportunity",
               "items": {
                 "$ref": "#/definitions/TokenInfo"
-              },
-              "type": "array"
+              }
             },
             "rewards": {
+              "type": "array",
+              "description": "Array of one or more tokens a user will receive as a reward for investing in this opportunity",
               "items": {
                 "$ref": "#/definitions/TokenInfo"
-              },
-              "type": "array"
+              }
             }
-          },
-          "type": "object"
+          }
         }
-      },
-      "type": "object"
+      }
     },
     "ProtectionMarketInfo": {
+      "type": "object",
+      "description": "Metadata for a single market in a protection market list",
+      "additionalProperties": false,
       "properties": {
-        "address": {
-          "type": "string"
-        },
         "chainId": {
-          "type": "number"
+          "type": "integer",
+          "description": "The chain ID of the Ethereum network where this token is deployed",
+          "minimum": 1,
+          "examples": [1, 42]
+        },
+        "address": {
+          "type": "string",
+          "description": "The checksummed address of the protection market on the specified chain ID",
+          "pattern": "^0x[a-fA-F0-9]{40}$",
+          "examples": ["0xdBDF2fC3Af896e18f2A9DC58883d12484202b57E"]
         },
         "decimals": {
-          "type": "number"
+          "type": "integer",
+          "description": "The number of decimals the market's receipt token has",
+          "minimum": 0,
+          "maximum": 255,
+          "examples": [18]
         },
-        "extensions": {
-          "additionalProperties": {
-            "type": ["null", "string", "number", "boolean"]
-          },
-          "type": "object"
+        "name": {
+          "type": "string",
+          "description": "The name of the protection market",
+          "minLength": 1,
+          "maxLength": 100,
+          "pattern": "^[ \\w.'+\\-%\\/À-ÖØ-öø-ÿ:]+$",
+          "examples": ["Cozy USD Coin"]
+        },
+        "symbol": {
+          "type": "string",
+          "description": "The symbol for the protection market; must be alphanumeric",
+          "pattern": "^[a-zA-Z0-9+\\-%\\/\\$]+$",
+          "minLength": 1,
+          "maxLength": 100,
+          "examples": ["cozyUSDC"]
+        },
+        "logoURI": {
+          "type": "string",
+          "description": "A URI to the protection market's logo asset; if not set, interface will attempt to find a logo based on the token address; suggest SVG or PNG of size 64x64",
+          "format": "uri",
+          "examples": ["ipfs://QmXfzKRvjZz3u5JRgC4v5mGVbm9ahrUiB4DgzHBsnWbTMM"]
         },
         "investmentOpportunity": {
           "$ref": "#/definitions/InvestmentOpportunity"
         },
         "isTriggered": {
-          "type": "boolean"
-        },
-        "logoURI": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "symbol": {
-          "type": "string"
-        },
-        "tags": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
+          "type": "boolean",
+          "description": "True if this market has been triggered, false if not triggered or not applicable",
+          "examples": [true, false]
         },
         "trigger": {
-          "type": "string"
+          "type": "string",
+          "description": "The checksummed address of the market's trigger contract, or the zero address for markets without a trigger",
+          "pattern": "^0x[a-fA-F0-9]{40}$",
+          "examples": [
+            "0x02E57c5800a345Fe97d73fA8bB72B948E19aA499",
+            "0x0000000000000000000000000000000000000000"
+          ]
         },
         "underlying": {
           "$ref": "#/definitions/TokenInfo"
+        },
+        "tags": {
+          "type": "array",
+          "description": "An array of tag identifiers associated with the market; tags are defined at the list level",
+          "items": {
+            "$ref": "#/definitions/TagIdentifier"
+          },
+          "maxItems": 10,
+          "examples": ["stablecoin", "compound"]
+        },
+        "extensions": {
+          "type": "object",
+          "description": "An object containing any arbitrary or vendor-specific market metadata",
+          "propertyNames": {
+            "$ref": "#/definitions/ExtensionIdentifier"
+          },
+          "additionalProperties": {
+            "$ref": "#/definitions/ExtensionValue"
+          },
+          "maxProperties": 10,
+          "examples": [
+            {
+              "color": "#000000",
+              "is_verified_by_me": true
+            }
+          ]
         }
-      },
-      "type": "object"
+      }
     },
     "StrategyLeg": {
+      "type": "object",
+      "description": "Describes one of the steps taken to enter an investment opportunity",
       "properties": {
         "action": {
           "enum": ["Borrow", "Deposit to", "Stake on"],
           "type": "string"
         },
         "destination": {
-          "type": "number"
+          "type": "number",
+          "description": "Platform ID the strategy leg targets",
+          "minimum": 1
         },
         "logoURI": {
-          "type": "string"
+          "type": "string",
+          "description": "A URI for the logo of the strategy leg; prefer SVG or PNG of size 256x256",
+          "format": "uri",
+          "examples": ["ipfs://QmXfzKRvjZz3u5JRgC4v5mGVbm9ahrUiB4DgzHBsnWbTMM"]
         }
-      },
-      "type": "object"
-    },
-    "Tags": {
-      "additionalProperties": {
-        "properties": {
-          "description": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "type": "object"
+      }
     },
     "TokenInfo": {
+      "type": "object",
+      "description": "Metadata for a single token",
+      "additionalProperties": false,
       "properties": {
-        "address": {
-          "type": "string"
-        },
         "chainId": {
-          "type": "number"
+          "type": "integer",
+          "description": "The chain ID of the Ethereum network where this token is deployed",
+          "minimum": 1,
+          "examples": [1, 42]
+        },
+        "address": {
+          "type": "string",
+          "description": "The checksummed address of the token on the specified chain ID",
+          "pattern": "^0x[a-fA-F0-9]{40}$",
+          "examples": ["0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"]
         },
         "decimals": {
-          "type": "number"
-        },
-        "extensions": {
-          "additionalProperties": {
-            "type": ["null", "string", "number", "boolean"]
-          },
-          "type": "object"
-        },
-        "logoURI": {
-          "type": "string"
+          "type": "integer",
+          "description": "The number of decimals for the token balance",
+          "minimum": 0,
+          "maximum": 255,
+          "examples": [18]
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "description": "The name of the token",
+          "minLength": 1,
+          "maxLength": 40,
+          "pattern": "^[ \\w.'+\\-%\\/À-ÖØ-öø-ÿ:]+$",
+          "examples": ["USD Coin"]
         },
         "symbol": {
-          "type": "string"
+          "type": "string",
+          "description": "The symbol for the token; must be alphanumeric",
+          "pattern": "^[a-zA-Z0-9+\\-%\\/\\$]+$",
+          "minLength": 1,
+          "maxLength": 20,
+          "examples": ["USDC"]
+        },
+        "logoURI": {
+          "type": "string",
+          "description": "A URI to the token logo asset; if not set, interface will attempt to find a logo based on the token address; suggest SVG or PNG of size 64x64",
+          "format": "uri",
+          "examples": ["ipfs://QmXfzKRvjZz3u5JRgC4v5mGVbm9ahrUiB4DgzHBsnWbTMM"]
         },
         "tags": {
+          "type": "array",
+          "description": "An array of tag identifiers associated with the token; tags are defined at the list level",
           "items": {
-            "type": "string"
+            "$ref": "#/definitions/TagIdentifier"
           },
-          "type": "array"
+          "maxItems": 10,
+          "examples": ["stablecoin", "compound"]
+        },
+        "extensions": {
+          "type": "object",
+          "description": "An object containing any arbitrary or vendor-specific token metadata",
+          "propertyNames": {
+            "$ref": "#/definitions/ExtensionIdentifier"
+          },
+          "additionalProperties": {
+            "$ref": "#/definitions/ExtensionValue"
+          },
+          "maxProperties": 10,
+          "examples": [
+            {
+              "color": "#000000",
+              "is_verified_by_me": true
+            }
+          ]
         }
       },
-      "type": "object"
-    },
-    "Version": {
-      "properties": {
-        "major": {
-          "type": "number"
-        },
-        "minor": {
-          "type": "number"
-        },
-        "patch": {
-          "type": "number"
-        }
-      },
-      "type": "object"
+      "required": ["chainId", "address", "decimals", "name", "symbol"]
     }
   },
+  "type": "object",
+  "additionalProperties": false,
   "properties": {
-    "keywords": {
-      "items": {
-        "type": "string"
-      },
-      "type": "array"
-    },
-    "logoURI": {
-      "type": "string"
-    },
-    "markets": {
-      "items": {
-        "$ref": "#/definitions/ProtectionMarketInfo"
-      },
-      "type": "array"
-    },
     "name": {
-      "type": "string"
-    },
-    "tags": {
-      "$ref": "#/definitions/Tags"
+      "type": "string",
+      "description": "The name of the protection market list",
+      "minLength": 1,
+      "maxLength": 255,
+      "pattern": "^[\\w ]+$",
+      "examples": ["My Protection Market List"]
     },
     "timestamp": {
-      "type": "string"
+      "type": "string",
+      "format": "date-time",
+      "description": "The timestamp of this list version; i.e. when this immutable version of the list was created"
     },
     "version": {
       "$ref": "#/definitions/Version"
+    },
+    "markets": {
+      "type": "array",
+      "description": "The list of markets included in the list",
+      "items": {
+        "$ref": "#/definitions/ProtectionMarketInfo"
+      },
+      "minItems": 1,
+      "maxItems": 10000
+    },
+    "keywords": {
+      "type": "array",
+      "description": "Keywords associated with the contents of the list; may be used in list discoverability",
+      "items": {
+        "type": "string",
+        "description": "A keyword to describe the contents of the list",
+        "minLength": 1,
+        "maxLength": 20,
+        "pattern": "^[\\w ]+$",
+        "examples": ["yearn", "lending"]
+      },
+      "maxItems": 20,
+      "uniqueItems": true
+    },
+    "tags": {
+      "type": "object",
+      "description": "A mapping of tag identifiers to their name and description",
+      "propertyNames": {
+        "$ref": "#/definitions/TagIdentifier"
+      },
+      "additionalProperties": {
+        "$ref": "#/definitions/TagDefinition"
+      },
+      "maxProperties": 20,
+      "examples": [
+        {
+          "stablecoin": {
+            "name": "Stablecoin",
+            "description": "A token with value pegged to another asset"
+          }
+        }
+      ]
+    },
+    "logoURI": {
+      "type": "string",
+      "description": "A URI for the logo of the protection market list; prefer SVG or PNG of size 256x256",
+      "format": "uri",
+      "examples": ["ipfs://QmXfzKRvjZz3u5JRgC4v5mGVbm9ahrUiB4DgzHBsnWbTMM"]
     }
   },
-  "type": "object"
+  "required": ["name", "timestamp", "version", "markets"]
 }

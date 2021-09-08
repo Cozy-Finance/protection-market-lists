@@ -18,7 +18,7 @@
         "symbol": "USDC",
         "name": "USD Coin",
         "decimals": 6,
-        "logoURI": "https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_USDC.svg",
+        "logoURI": "hello",
         "tags": ["stablecoin"]
       }
     },
