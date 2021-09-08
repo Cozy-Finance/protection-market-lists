@@ -220,7 +220,7 @@
         },
         "logoURI": {
           "type": "string",
-          "description": "A URI to the protection market's logo asset; if not set, interface will attempt to find a logo based on the token address; suggest SVG or PNG of size 64x64",
+          "description": "A URI to the protection market's logo asset; if not set, interface will attempt to find a logo based on the token address; suggest SVG or PNG of size 256x256",
           "format": "uri",
           "examples": ["ipfs://QmXfzKRvjZz3u5JRgC4v5mGVbm9ahrUiB4DgzHBsnWbTMM"]
         },
@@ -335,7 +335,7 @@
         },
         "logoURI": {
           "type": "string",
-          "description": "A URI to the token logo asset; if not set, interface will attempt to find a logo based on the token address; suggest SVG or PNG of size 64x64",
+          "description": "A URI to the token logo asset; if not set, interface will attempt to find a logo based on the token address; suggest SVG or PNG of size 256x256",
           "format": "uri",
           "examples": ["ipfs://QmXfzKRvjZz3u5JRgC4v5mGVbm9ahrUiB4DgzHBsnWbTMM"]
         },
