@@ -53,7 +53,7 @@ export interface DivestScript {
 }
 
 export interface StrategyLeg {
-  action: 'Borrow' | 'Deposit to' | 'Stake on'; // TODO add more
+  action: 'Borrow' | 'Swap to' | 'Deposit for' | 'Deposit to' | 'Stake on';
   destination: number; // Platform ID of strategy target
   logoURI?: string;
 }
