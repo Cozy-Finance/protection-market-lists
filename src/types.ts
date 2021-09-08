@@ -86,9 +86,3 @@ export interface ProtectionMarketList {
   readonly tags?: Tags;
   readonly logoURI?: string;
 }
-
-// TODO current spec uses `TokenInfo` everywhere there's a token, so it sends lots of redundant information. A more
-// compact representation might add a `tokens: Record<string,TokenInfo[]>` field to the ProtectionMarketList type,
-// and replace all other uses of the `TokenInfo` type with the token address as a `string`. This way you can
-// look up each token in the `tokens` mapping in O(1) regardless of list size, and still maintain a large
-// protection market list without the size getting too big from repeated token data
