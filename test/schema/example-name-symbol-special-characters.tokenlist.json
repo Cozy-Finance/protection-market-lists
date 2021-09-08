@@ -5,8 +5,8 @@
     {
       "chainId": 1,
       "address": "0xdBDF2fC3Af896e18f2A9DC58883d12484202b57E",
-      "symbol": "cozyUSDC",
-      "name": "Cozy USD Coin",
+      "symbol": "USD++",
+      "name": "PieDAO USD++ Pool",
       "decimals": 8,
       "logoURI": "https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_USDC.svg",
       "tags": ["stablecoin", "money market"],
@@ -15,8 +15,8 @@
       "underlying": {
         "chainId": 1,
         "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-        "symbol": "USDC++",
-        "name": "$USD Coin",
+        "symbol": "UNI-USDC/ETH+50/50%",
+        "name": "Uniswap V2-USDC/ETH+50/50%",
         "decimals": 6,
         "logoURI": "https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_USDC.svg",
         "tags": ["stablecoin"]
@@ -25,8 +25,8 @@
     {
       "chainId": 1,
       "address": "0x9affB6D8568cEfa2837d251b1553967430D1a5e5",
-      "symbol": "Cozy-USDC-2",
-      "name": "Cozy-USDC-2-Yearn USDC V2 Vault Share Price Trigger",
+      "symbol": "DIACRITIC",
+      "name": "Ázertíyuöp",
       "decimals": 8,
       "logoURI": "https://compound.finance/compound-components/assets/asset_YFI.svg",
       "tags": ["stablecoin", "protection market"],
@@ -35,8 +35,8 @@
       "underlying": {
         "chainId": 1,
         "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-        "symbol": "USDC !@#$%^&*()",
-        "name": "Ázertíyuöp USD: Coin !@#$%^&*()",
+        "symbol": "$TRDL",
+        "name": "Strudel Finance",
         "decimals": 6,
         "logoURI": "https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_USDC.svg",
         "tags": ["stablecoin"]

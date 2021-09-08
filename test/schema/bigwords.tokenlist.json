@@ -17,8 +17,8 @@
     {
       "chainId": 1,
       "address": "0xdBDF2fC3Af896e18f2A9DC58883d12484202b57E",
-      "symbol": "cozyUSDC cozyUSDC cozyUSDC cozyUSDC",
-      "name": "Cozy USD Coin Cozy USD Coin Cozy USD Coin Cozy USD Coin",
+      "symbol": "cozyUSDC",
+      "name": "Cozy USD Coin Cozy USD Coin Cozy USD Coin Cozy USD Coin Cozy USD Coin Cozy USD Coin Cozy USD Coin Cozy USD Coin",
       "decimals": 8,
       "logoURI": "https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_USDC.svg",
       "tags": ["stablecoin", "money market"],
@@ -27,7 +27,7 @@
       "underlying": {
         "chainId": 1,
         "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-        "symbol": "USDC USDC USDC USDC",
+        "symbol": "USDC",
         "name": "USD Coin USD Coin USD Coin USD Coin",
         "decimals": 6,
         "logoURI": "https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_USDC.svg",
@@ -37,8 +37,8 @@
     {
       "chainId": 1,
       "address": "0x9affB6D8568cEfa2837d251b1553967430D1a5e5",
-      "symbol": "Cozy-USDC-2 Cozy-USDC-2 Cozy-USDC-2 Cozy-USDC-2",
-      "name": "Cozy-USDC-2-Yearn USDC V2 Vault Share Price Trigger Cozy-USDC-2-Yearn USDC V2 Vault Share Price Trigger Cozy-USDC-2-Yearn USDC V2 Vault Share Price Trigger Cozy-USDC-2-Yearn USDC V2 Vault Share Price Trigger",
+      "symbol": "Cozy-USDC-2",
+      "name": "Cozy-USDC-2-Yearn USDC V2 Vault Share Price Trigger",
       "decimals": 8,
       "logoURI": "https://compound.finance/compound-components/assets/asset_YFI.svg",
       "tags": ["stablecoin", "protection market"],
@@ -47,7 +47,7 @@
       "underlying": {
         "chainId": 1,
         "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-        "symbol": "USDC USDC USDC USDC",
+        "symbol": "USDC",
         "name": "USD Coin USD Coin USD Coin USD Coin",
         "decimals": 6,
         "logoURI": "https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_USDC.svg",
