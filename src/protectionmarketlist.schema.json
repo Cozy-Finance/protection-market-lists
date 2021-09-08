@@ -277,7 +277,13 @@
       "description": "Describes one of the steps taken to enter an investment opportunity",
       "properties": {
         "action": {
-          "enum": ["Borrow", "Deposit to", "Stake on"],
+          "enum": [
+            "Borrow",
+            "Swap to",
+            "Deposit for",
+            "Deposit to",
+            "Stake on"
+          ],
           "type": "string"
         },
         "destination": {
