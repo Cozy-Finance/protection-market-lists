@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Protection Market List",
-  "description": "Schema for lists of markets compatible with the Cozy Protocol",
+  "description": "Schema for lists of markets available on the Cozy Protocol",
   "definitions": {
     "Version": {
       "type": "object",
@@ -110,7 +110,7 @@
         },
         "signature": {
           "enum": [
-            "function divest(uint256[] amounts, address recipient, uint256[] claimRewards)"
+            "function divest(address recipient, uint256[] receiptAmounts, uint256[] rewardAmounts)"
           ],
           "type": "string"
         }
@@ -118,7 +118,7 @@
     },
     "InvestScript": {
       "type": "object",
-      "description": "Parameters of the contract containing an `invest` method to exit an investment opportunity",
+      "description": "Parameters of the contract containing an `invest` method to enter an investment opportunity",
 
       "properties": {
         "address": {
@@ -136,7 +136,11 @@
       "properties": {
         "dataURI": {
           "type": "string",
-          "description": "API endpoint that can be queried to return market and user data about the investment opportunity"
+          "description": "API endpoint that can be queried to return market and user data about the investment opportunity",
+          "format": "uri",
+          "examples": [
+            "https://api.cozy.finance/opportunities/usdc-yearn?account=0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"
+          ]
         },
         "divest": {
           "$ref": "#/definitions/DivestScript"
