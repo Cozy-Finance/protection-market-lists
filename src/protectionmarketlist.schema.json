@@ -293,7 +293,7 @@
         "destination": {
           "type": "number",
           "description": "Platform ID the strategy leg targets",
-          "minimum": 1
+          "minimum": 0
         },
         "logoURI": {
           "type": "string",
