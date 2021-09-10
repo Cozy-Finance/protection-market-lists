@@ -73,7 +73,6 @@ export interface InvestmentOpportunity {
 export interface ProtectionMarketInfo extends TokenInfo {
   readonly underlying: TokenInfo; // if `underlying.address === 0xEeee....EEeE`, underlying is ETH
   readonly trigger: string; // trigger contract address for protection markets, or zero address for money markets
-  readonly isTriggered: boolean; // true if this market was triggered
   readonly investmentOpportunity?: InvestmentOpportunity; // details on how protected investing using this market
 }
 
