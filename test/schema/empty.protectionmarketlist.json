@@ -2,6 +2,7 @@
   "name": "My Example List",
   "timestamp": "2018-11-13T20:20:39+00:00",
   "markets": [],
+  "tokens": {},
   "version": {
     "major": 0,
     "minor": 0,
