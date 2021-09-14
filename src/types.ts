@@ -54,7 +54,8 @@ export interface DivestScript {
 
 export interface StrategyLeg {
   action: 'Borrow' | 'Swap to' | 'Deposit for' | 'Deposit to' | 'Stake on';
-  destination: number; // Platform ID of strategy target
+  token: string; // address of the token, to be looked up in the `tokens` mapping
+  platformId: number; // Platform ID of strategy target
   logoURI?: string;
 }
 
@@ -63,15 +64,16 @@ export interface InvestmentOpportunity {
   readonly divest: DivestScript;
   readonly dataURI: string; // API endpoint to query for user data from, e.g. balances
   readonly tokens: {
-    readonly input: TokenInfo[]; // tokens the user will deposit to enter this opportunity, and receipt upon exiting
-    readonly receipt: TokenInfo[]; // receipt tokens the user needs to exit this opportunity
-    readonly rewards: TokenInfo[]; // rewards tokens the user may claim when exiting this opportunity
+    // arrays of token addresses, to be looked up in the `tokens` mapping
+    readonly input: string[]; // token addresses the user will deposit to enter this opportunity, and receipt upon exiting
+    readonly receipt: string[]; // receipt token addresses the user needs to exit this opportunity
+    readonly rewards: string[]; // rewards token addresses the user may claim when exiting this opportunity
   };
   readonly strategy?: StrategyLeg[];
 }
 
 export interface ProtectionMarketInfo extends TokenInfo {
-  readonly underlying: TokenInfo; // if `underlying.address === 0xEeee....EEeE`, underlying is ETH
+  readonly underlying: string; // address of underlying, if `underlying === 0xEeee....EEeE`, underlying is ETH
   readonly trigger: string; // trigger contract address for protection markets, or zero address for money markets
   readonly investmentOpportunity?: InvestmentOpportunity; // details on how protected investing using this market
 }
@@ -81,6 +83,7 @@ export interface ProtectionMarketList {
   readonly timestamp: string;
   readonly version: Version;
   readonly markets: ProtectionMarketInfo[];
+  readonly tokens: Record<string, TokenInfo>; // maps from checksummed token address to TokenInfo
   readonly keywords?: string[];
   readonly tags?: Tags;
   readonly logoURI?: string;

@@ -122,7 +122,9 @@
 
       "properties": {
         "address": {
-          "type": "string"
+          "type": "string",
+          "description": "Address of the contract containing the invest logic",
+          "pattern": "^0x[a-fA-F0-9]{40}$"
         },
         "signature": {
           "enum": ["function invest(uint256[] amounts, uint256[] approve)"],
@@ -159,23 +161,26 @@
           "properties": {
             "input": {
               "type": "array",
-              "description": "Array of one or more tokens a user must have to invest in this opportunity",
+              "description": "Array of one or more token addresses a user must have to invest in this opportunity",
               "items": {
-                "$ref": "#/definitions/TokenInfo"
+                "type": "string",
+                "pattern": "^0x[a-fA-F0-9]{40}$"
               }
             },
             "receipt": {
               "type": "array",
-              "description": "Array of one or more tokens a user will receive after investing in this opportunity",
+              "description": "Array of one or more token addresses a user will receive after investing in this opportunity",
               "items": {
-                "$ref": "#/definitions/TokenInfo"
+                "type": "string",
+                "pattern": "^0x[a-fA-F0-9]{40}$"
               }
             },
             "rewards": {
               "type": "array",
-              "description": "Array of one or more tokens a user will receive as a reward for investing in this opportunity",
+              "description": "Array of one or more token addresses a user will receive as a reward for investing in this opportunity",
               "items": {
-                "$ref": "#/definitions/TokenInfo"
+                "type": "string",
+                "pattern": "^0x[a-fA-F0-9]{40}$"
               }
             }
           }
@@ -246,7 +251,9 @@
           ]
         },
         "underlying": {
-          "$ref": "#/definitions/TokenInfo"
+          "type": "string",
+          "description": "Address of the market's underlying token",
+          "pattern": "^0x[a-fA-F0-9]{40}$"
         },
         "tags": {
           "type": "array",
@@ -290,9 +297,14 @@
           ],
           "type": "string"
         },
-        "destination": {
+        "token": {
+          "type": "string",
+          "description": "Address of the token used for this action; address can be looked up in the tokens mapping",
+          "pattern": "^0x[a-fA-F0-9]{40}$"
+        },
+        "platformId": {
           "type": "number",
-          "description": "Platform ID the strategy leg targets",
+          "description": "Platform ID of strategy leg target",
           "minimum": 0
         },
         "logoURI": {
@@ -406,6 +418,17 @@
       },
       "minItems": 1,
       "maxItems": 10000
+    },
+    "tokens": {
+      "type": "object",
+      "description": "Mapping from checksummed token addresses to TokenInfo",
+      "patternProperties": {
+        "^0x[a-fA-F0-9]{40}$": {
+          "type": "object",
+          "description": "Details about the token address given by the key",
+          "$ref": "#/definitions/TokenInfo"
+        }
+      }
     },
     "keywords": {
       "type": "array",
