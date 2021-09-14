@@ -12,15 +12,7 @@
       "tags": ["stablecoin", "money market"],
       "trigger": "0x0000000000000000000000000000000000000000",
       "isTriggered": false,
-      "underlying": {
-        "chainId": 1,
-        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-        "symbol": "USDC",
-        "name": "USD Coin",
-        "decimals": 6,
-        "logoURI": "hello",
-        "tags": ["stablecoin"]
-      }
+      "underlying":"0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
     },
     {
       "chainId": 1,
@@ -32,17 +24,20 @@
       "tags": ["stablecoin", "protection market"],
       "trigger": "0x02E57c5800a345Fe97d73fA8bB72B948E19aA499",
       "isTriggered": false,
-      "underlying": {
-        "chainId": 1,
-        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-        "symbol": "USDC",
-        "name": "USD Coin",
-        "decimals": 6,
-        "logoURI": "https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_USDC.svg",
-        "tags": ["stablecoin"]
-      }
+      "underlying": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
     }
   ],
+  "tokens": {
+    "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48": {
+      "chainId": 1,
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "symbol": "USDC",
+      "name": "USD Coin",
+      "decimals": 6,
+      "logoURI": "hello",
+      "tags": ["stablecoin"]
+    }
+  },
   "version": {
     "major": 1,
     "minor": 0,

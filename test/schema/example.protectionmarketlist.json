@@ -23,15 +23,7 @@
       "logoURI": "https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_USDC.svg",
       "tags": ["stablecoin", "money market"],
       "trigger": "0x0000000000000000000000000000000000000000",
-      "underlying": {
-        "chainId": 1,
-        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-        "symbol": "USDC",
-        "name": "USD Coin",
-        "decimals": 6,
-        "logoURI": "https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_USDC.svg",
-        "tags": ["stablecoin"]
-      }
+      "underlying": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
     },
     {
       "chainId": 1,
@@ -42,15 +34,7 @@
       "logoURI": "https://compound.finance/compound-components/assets/asset_YFI.svg",
       "tags": ["stablecoin", "protection market"],
       "trigger": "0x02E57c5800a345Fe97d73fA8bB72B948E19aA499",
-      "underlying": {
-        "chainId": 1,
-        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-        "symbol": "USDC",
-        "name": "USD Coin",
-        "decimals": 6,
-        "logoURI": "https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_USDC.svg",
-        "tags": ["stablecoin"]
-      },
+      "underlying": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
       "investmentOpportunity": {
         "invest": {
           "address": "0x0000000000000000000000000000000000000000",
@@ -62,27 +46,8 @@
         },
         "dataURI": "https://api.cozy.finance/opportunities/usdc-yearn",
         "tokens": {
-          "input": [
-            {
-              "chainId": 1,
-              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-              "symbol": "USDC",
-              "name": "USD Coin",
-              "decimals": 6,
-              "logoURI": "https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_USDC.svg",
-              "tags": ["stablecoin"]
-            }
-          ],
-          "receipt": [
-            {
-              "chainId": 1,
-              "address": "0x5f18C75AbDAe578b483E5F43f12a39cF75b973a9",
-              "symbol": "yvUSDC",
-              "name": "USDC yVault",
-              "decimals": 6,
-              "logoURI": "https://raw.githubusercontent.com/yearn/yearn-assets/master/icons/tokens/0x597aD1e0c13Bfe8025993D9e79C69E1c0233522e/logo.svg"
-            }
-          ],
+          "input": ["0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"],
+          "receipt": ["0x5f18C75AbDAe578b483E5F43f12a39cF75b973a9"],
           "rewards": []
         },
         "strategy": [
@@ -100,6 +65,25 @@
       }
     }
   ],
+  "tokens": {
+    "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48": {
+      "chainId": 1,
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "symbol": "USDC",
+      "name": "USD Coin",
+      "decimals": 6,
+      "logoURI": "https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_USDC.svg",
+      "tags": ["stablecoin"]
+    },
+    "0x5f18C75AbDAe578b483E5F43f12a39cF75b973a9": {
+      "chainId": 1,
+      "address": "0x5f18C75AbDAe578b483E5F43f12a39cF75b973a9",
+      "symbol": "yvUSDC",
+      "name": "USDC yVault",
+      "decimals": 6,
+      "logoURI": "https://raw.githubusercontent.com/yearn/yearn-assets/master/icons/tokens/0x597aD1e0c13Bfe8025993D9e79C69E1c0233522e/logo.svg"
+    }
+  },
   "version": {
     "major": 1,
     "minor": 0,
