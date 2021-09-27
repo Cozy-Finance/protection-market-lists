@@ -32,13 +32,9 @@ export interface Tags {
 // would be [ETH, WBTC, USDT]. When calling `invest` on `address`, amounts[0] would correspond to the amount of ETH
 // to invest, amounts[1] would correspond to the amount of WBTC to invest, etc. An amount of MAX_UINT256 should be
 // used to signal that you want to invest all tokens you have
-//
-// The same concept also applies to `approves`, which defines whether or not to check and execute approvals for the
-// given token. This is an option to save gas. Similar to `amounts`, the number passed in here specifies how much
-// to approve the spending contract for
 export interface InvestScript {
   readonly address: string;
-  readonly signature?: 'function invest(uint256[] amounts, uint256[] approve)';
+  readonly signature?: 'function invest(uint256[] amounts)';
 }
 
 // Parameters for exiting a protected investment.

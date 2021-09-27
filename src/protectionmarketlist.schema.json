@@ -127,7 +127,7 @@
           "pattern": "^0x[a-fA-F0-9]{40}$"
         },
         "signature": {
-          "enum": ["function invest(uint256[] amounts, uint256[] approve)"],
+          "enum": ["function invest(uint256[] amounts)"],
           "type": "string"
         }
       }

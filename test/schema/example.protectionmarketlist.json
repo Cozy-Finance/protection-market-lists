@@ -38,7 +38,7 @@
       "investmentOpportunity": {
         "invest": {
           "address": "0x0000000000000000000000000000000000000000",
-          "signature": "function invest(uint256[] amounts, uint256[] approve)"
+          "signature": "function invest(uint256[] amounts)"
         },
         "divest": {
           "address": "0x0000000000000000000000000000000000000000",
