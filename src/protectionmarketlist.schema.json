@@ -110,7 +110,7 @@
         },
         "signature": {
           "enum": [
-            "function divest(address recipient, uint256[] receiptAmounts, uint256[] rewardAmounts)"
+            "function divest(address recipient, uint256[] receiptAmounts, uint256[] rewardAmounts) external payable"
           ],
           "type": "string"
         }
@@ -127,7 +127,7 @@
           "pattern": "^0x[a-fA-F0-9]{40}$"
         },
         "signature": {
-          "enum": ["function invest(uint256[] amounts)"],
+          "enum": ["function invest(uint256[] amounts) external"],
           "type": "string"
         }
       }
