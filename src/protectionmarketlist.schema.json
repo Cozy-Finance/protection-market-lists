@@ -110,11 +110,13 @@
         },
         "signature": {
           "enum": [
-            "function divest(address recipient, uint256[] receiptAmounts, uint256[] rewardAmounts) external payable"
+            "function divest(address recipient, uint256[] calldata receiptAmounts, uint256[] calldata rewardAmounts) external payable",
+            "function divest(address recipient, uint256[] calldata receiptAmounts, uint256[] calldata rewardAmounts, bytes calldata data) external payable"
           ],
           "type": "string"
         }
-      }
+      },
+      "required": ["address", "signature"]
     },
     "InvestScript": {
       "type": "object",
@@ -127,10 +129,14 @@
           "pattern": "^0x[a-fA-F0-9]{40}$"
         },
         "signature": {
-          "enum": ["function invest(uint256[] amounts) external"],
+          "enum": [
+            "function invest(uint256[] calldata amounts) external payable",
+            "function invest(uint256[] calldata amounts, bytes calldata data) external payable"
+          ],
           "type": "string"
         }
-      }
+      },
+      "required": ["address", "signature"]
     },
     "InvestmentOpportunity": {
       "type": "object",

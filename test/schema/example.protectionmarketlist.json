@@ -38,11 +38,11 @@
       "investmentOpportunity": {
         "invest": {
           "address": "0x0000000000000000000000000000000000000000",
-          "signature": "function invest(uint256[] amounts) external"
+          "signature": "function invest(uint256[] calldata amounts, bytes calldata data) external payable"
         },
         "divest": {
           "address": "0x0000000000000000000000000000000000000000",
-          "signature": "function divest(address recipient, uint256[] receiptAmounts, uint256[] rewardAmounts) external payable"
+          "signature": "function divest(address recipient, uint256[] calldata receiptAmounts, uint256[] calldata rewardAmounts, bytes calldata data) external payable"
         },
         "dataURI": "https://api.cozy.finance/opportunities/usdc-yearn",
         "tokens": {
