@@ -34,7 +34,9 @@ export interface Tags {
 // used to signal that you want to invest all tokens you have
 export interface InvestScript {
   readonly address: string;
-  readonly signature?: 'function invest(uint256[] amounts) external';
+  readonly signature:
+    | 'function invest(uint256[] calldata amounts) external payable'
+    | 'function invest(uint256[] calldata amounts, bytes calldata data) external payable';
 }
 
 // Parameters for exiting a protected investment.
@@ -45,7 +47,9 @@ export interface InvestScript {
 // tokens and reward tokens should be sent to
 export interface DivestScript {
   readonly address: string;
-  readonly signature?: 'function divest(address recipient, uint256[] receiptAmounts, uint256[] rewardAmounts) external payable';
+  readonly signature:
+    | 'function divest(address recipient, uint256[] calldata receiptAmounts, uint256[] calldata rewardAmounts) external payable'
+    | 'function divest(address recipient, uint256[] calldata receiptAmounts, uint256[] calldata rewardAmounts, bytes calldata data) external payable';
 }
 
 export interface StrategyLeg {
