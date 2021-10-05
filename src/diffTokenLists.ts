@@ -1,9 +1,6 @@
 import { TokenInfo } from './types';
 
-export type TokenInfoChangeKey = Exclude<
-  keyof TokenInfo,
-  'address' | 'chainId'
->;
+export type TokenInfoChangeKey = Exclude<keyof TokenInfo, 'address' | 'chainId'>;
 export type TokenInfoChanges = Array<TokenInfoChangeKey>;
 
 /**
@@ -48,10 +45,7 @@ export interface TokenListDiff {
  * @param base base list
  * @param update updated list
  */
-export function diffTokenLists(
-  base: TokenInfo[],
-  update: TokenInfo[]
-): TokenListDiff {
+export function diffTokenLists(base: TokenInfo[], update: TokenInfo[]): TokenListDiff {
   const indexedBase = base.reduce<{
     [chainId: number]: { [address: string]: TokenInfo };
   }>((memo, tokenInfo) => {
@@ -79,9 +73,7 @@ export function diffTokenLists(
         memo.added.push(tokenInfo);
       } else {
         const changes: TokenInfoChanges = Object.keys(tokenInfo)
-          .filter(
-            (s): s is TokenInfoChangeKey => s !== 'address' && s !== 'chainId'
-          )
+          .filter((s): s is TokenInfoChangeKey => s !== 'address' && s !== 'chainId')
           .filter(s => {
             return !compareTokenInfoProperty(tokenInfo[s], baseToken[s]);
           });
@@ -107,10 +99,7 @@ export function diffTokenLists(
   );
 
   const removed = base.reduce<TokenInfo[]>((list, curr) => {
-    if (
-      !newListUpdates.index[curr.chainId] ||
-      !newListUpdates.index[curr.chainId][curr.address]
-    ) {
+    if (!newListUpdates.index[curr.chainId] || !newListUpdates.index[curr.chainId][curr.address]) {
       list.push(curr);
     }
     return list;
