@@ -12,7 +12,7 @@
       "tags": ["stablecoin", "money market"],
       "trigger": "0x0000000000000000000000000000000000000000",
       "isTriggered": false,
-      "underlying":"0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+      "underlying": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
     },
     {
       "chainId": 1,
@@ -24,7 +24,7 @@
       "tags": ["stablecoin", "protection market"],
       "trigger": "0x02E57c5800a345Fe97d73fA8bB72B948E19aA499",
       "isTriggered": false,
-      "underlying":"0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+      "underlying": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
     }
   ],
   "tokens": {

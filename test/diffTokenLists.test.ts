@@ -38,9 +38,7 @@ describe('#diffTokenLists', () => {
   });
 
   it('change name', () => {
-    expect(
-      diffTokenLists([tokenB, tokenA], [tokenB, tokenAChangedNameDecimals])
-    ).toEqual({
+    expect(diffTokenLists([tokenB, tokenA], [tokenB, tokenAChangedNameDecimals])).toEqual({
       added: [],
       removed: [],
       changed: {
@@ -63,9 +61,7 @@ describe('#diffTokenLists', () => {
     });
   });
   it('remove tags', () => {
-    expect(
-      diffTokenLists([tokenB, tokenA], [{ ...tokenA, tags: undefined }])
-    ).toEqual({
+    expect(diffTokenLists([tokenB, tokenA], [{ ...tokenA, tags: undefined }])).toEqual({
       added: [],
       removed: [tokenB],
       changed: {

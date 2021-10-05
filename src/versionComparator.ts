@@ -6,10 +6,7 @@ import { Version } from './types';
  * @param versionB version B to compare
  * @returns -1 if versionA comes before versionB, 0 if versionA is equal to version B, and 1 if version A comes after version B
  */
-export function versionComparator(
-  versionA: Version,
-  versionB: Version
-): -1 | 0 | 1 {
+export function versionComparator(versionA: Version, versionB: Version): -1 | 0 | 1 {
   if (versionA.major < versionB.major) {
     return -1;
   } else if (versionA.major > versionB.major) {

@@ -31,14 +31,10 @@ describe('#minVersionBump', () => {
     expect(minVersionBump([], [])).toBe(VersionUpgrade.NONE);
   });
   it('patch for tag changes only', () => {
-    expect(minVersionBump([tokenA], [tokenAChangedTags])).toBe(
-      VersionUpgrade.PATCH
-    );
+    expect(minVersionBump([tokenA], [tokenAChangedTags])).toBe(VersionUpgrade.PATCH);
   });
   it('patch for name/decimals changes', () => {
-    expect(minVersionBump([tokenA], [tokenAChangedNameDecimals])).toBe(
-      VersionUpgrade.PATCH
-    );
+    expect(minVersionBump([tokenA], [tokenAChangedNameDecimals])).toBe(VersionUpgrade.PATCH);
   });
   it('major for remove', () => {
     expect(minVersionBump([tokenA], [])).toBe(VersionUpgrade.MAJOR);

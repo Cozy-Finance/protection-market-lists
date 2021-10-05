@@ -16,10 +16,7 @@ export enum VersionUpgrade {
  * @param base base list
  * @param update update to the list
  */
-export function getVersionUpgrade(
-  base: Version,
-  update: Version
-): VersionUpgrade {
+export function getVersionUpgrade(base: Version, update: Version): VersionUpgrade {
   if (update.major > base.major) {
     return VersionUpgrade.MAJOR;
   }

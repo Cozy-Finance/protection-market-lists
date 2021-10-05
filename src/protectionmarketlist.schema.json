@@ -251,10 +251,7 @@
           "type": "string",
           "description": "The checksummed address of the market's trigger contract, or the zero address for markets without a trigger",
           "pattern": "^0x[a-fA-F0-9]{40}$",
-          "examples": [
-            "0x02E57c5800a345Fe97d73fA8bB72B948E19aA499",
-            "0x0000000000000000000000000000000000000000"
-          ]
+          "examples": ["0x02E57c5800a345Fe97d73fA8bB72B948E19aA499", "0x0000000000000000000000000000000000000000"]
         },
         "underlying": {
           "type": "string",
@@ -294,13 +291,7 @@
       "description": "Describes one of the steps taken to enter an investment opportunity",
       "properties": {
         "action": {
-          "enum": [
-            "Borrow",
-            "Swap to",
-            "Deposit for",
-            "Deposit to",
-            "Stake on"
-          ],
+          "enum": ["Borrow", "Swap to", "Deposit for", "Deposit to", "Stake on"],
           "type": "string"
         },
         "token": {
