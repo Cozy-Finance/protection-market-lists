@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Protection Market List",
+  "title": "Cozy Market List",
   "description": "Schema for lists of markets available on the Cozy Protocol",
   "definitions": {
     "Version": {
@@ -106,13 +106,12 @@
       "description": "Parameters of the contract containing a `divest` method to exit an investment opportunity",
       "properties": {
         "address": {
+          "description": "Address of the contract containing the invest logic",
+          "pattern": "^0x[a-fA-F0-9]{40}$",
           "type": "string"
         },
         "signature": {
-          "enum": [
-            "function divest(address recipient, uint256[] calldata receiptAmounts, uint256[] calldata rewardAmounts) external payable",
-            "function divest(address recipient, uint256[] calldata receiptAmounts, uint256[] calldata rewardAmounts, bytes calldata data) external payable"
-          ],
+          "pattern": "^function\\sdivest((s*([a-zA-Z_]w+)s+([a-zA-Z_]w+),?)*)",
           "type": "string"
         }
       },
@@ -129,10 +128,7 @@
           "pattern": "^0x[a-fA-F0-9]{40}$"
         },
         "signature": {
-          "enum": [
-            "function invest(uint256[] calldata amounts) external payable",
-            "function invest(uint256[] calldata amounts, bytes calldata data) external payable"
-          ],
+          "pattern": "^function\\sinvest((s*([a-zA-Z_]w+)s+([a-zA-Z_]w+),?)*)",
           "type": "string"
         }
       },
@@ -155,6 +151,16 @@
         },
         "invest": {
           "$ref": "#/definitions/InvestScript"
+        },
+        "logoURI": {
+          "type": "string",
+          "description": "A URI to the investment opportunity's logo asset; if not set, UI will attempt to find a logo based on the market logoURI; suggest SVG or PNG of size 256x256",
+          "format": "uri",
+          "examples": ["ipfs://QmXfzKRvjZz3u5JRgC4v5mGVbm9ahrUiB4DgzHBsnWbTMM"]
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the investment opportunity"
         },
         "strategy": {
           "type": "array",
@@ -239,8 +245,11 @@
           "format": "uri",
           "examples": ["ipfs://QmXfzKRvjZz3u5JRgC4v5mGVbm9ahrUiB4DgzHBsnWbTMM"]
         },
-        "investmentOpportunity": {
-          "$ref": "#/definitions/InvestmentOpportunity"
+        "investmentOpportunities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvestmentOpportunity"
+          }
         },
         "isTriggered": {
           "type": "boolean",
@@ -292,6 +301,10 @@
       "properties": {
         "action": {
           "enum": ["Borrow", "Swap to", "Deposit for", "Deposit to", "Stake on"],
+          "type": "string"
+        },
+        "actionReceiver": {
+          "description": "The receiver of the action in this leg;  whatever was borrowed, swapped to, deposited for, etc.",
           "type": "string"
         },
         "token": {
