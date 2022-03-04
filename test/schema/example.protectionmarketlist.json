@@ -35,34 +35,40 @@
       "tags": ["stablecoin", "protection market"],
       "trigger": "0x02E57c5800a345Fe97d73fA8bB72B948E19aA499",
       "underlying": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-      "investmentOpportunity": {
-        "invest": {
-          "address": "0x0000000000000000000000000000000000000000",
-          "signature": "function invest(uint256[] calldata amounts, bytes calldata data) external payable"
-        },
-        "divest": {
-          "address": "0x0000000000000000000000000000000000000000",
-          "signature": "function divest(address recipient, uint256[] calldata receiptAmounts, uint256[] calldata rewardAmounts, bytes calldata data) external payable"
-        },
-        "dataURI": "https://api.cozy.finance/opportunities/usdc-yearn",
-        "tokens": {
-          "input": ["0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"],
-          "receipt": ["0x5f18C75AbDAe578b483E5F43f12a39cF75b973a9"],
-          "rewards": []
-        },
-        "strategy": [
-          {
-            "action": "Borrow",
-            "destination": 0,
-            "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+      "investmentOpportunities": [
+        {
+          "invest": {
+            "address": "0x0000000000000000000000000000000000000000",
+            "signature": "function invest(uint256[] calldata amounts, bytes calldata data) external payable"
           },
-          {
-            "action": "Deposit to",
-            "destination": 1,
-            "logoURI": "https://assets.coingecko.com/coins/images/11849/thumb/yfi-192x192.png?1598325330"
-          }
-        ]
-      }
+          "divest": {
+            "address": "0x0000000000000000000000000000000000000000",
+            "signature": "function divest(address recipient, uint256[] calldata receiptAmounts, uint256[] calldata rewardAmounts, bytes calldata data) external payable"
+          },
+          "dataURI": "https://api.cozy.finance/opportunities/usdc-yearn",
+          "logoURI": "https://compound.finance/compound-components/assets/asset_YFI.svg",
+          "name": "USDC Compound",
+          "tokens": {
+            "input": ["0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"],
+            "receipt": ["0x5f18C75AbDAe578b483E5F43f12a39cF75b973a9"],
+            "rewards": []
+          },
+          "strategy": [
+            {
+              "action": "Borrow",
+              "actionReceiver": "USDC",
+              "destination": 0,
+              "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+            },
+            {
+              "action": "Deposit to",
+              "actionReceiver": "Compound",
+              "destination": 1,
+              "logoURI": "https://assets.coingecko.com/coins/images/11849/thumb/yfi-192x192.png?1598325330"
+            }
+          ]
+        }
+      ]
     }
   ],
   "tokens": {
