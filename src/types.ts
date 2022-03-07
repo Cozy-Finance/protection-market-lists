@@ -72,17 +72,17 @@ export interface InvestmentOpportunity {
   readonly strategy?: StrategyLeg[];
 }
 
-export interface ProtectionMarketInfo extends TokenInfo {
+export interface MarketInfo extends TokenInfo {
   readonly underlying: string; // address of underlying, if `underlying === 0xEeee....EEeE`, underlying is ETH
   readonly trigger: string; // trigger contract address for protection markets, or zero address for money markets
   readonly investmentOpportunity?: InvestmentOpportunity; // details on how protected investing using this market
 }
 
-export interface ProtectionMarketList {
+export interface MarketList {
   readonly name: string;
   readonly timestamp: string;
   readonly version: Version;
-  readonly markets: ProtectionMarketInfo[];
+  readonly markets: MarketInfo[];
   readonly tokens: Record<string, TokenInfo>; // maps from checksummed token address to TokenInfo
   readonly keywords?: string[];
   readonly tags?: Tags;

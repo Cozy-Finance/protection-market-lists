@@ -1,10 +1,10 @@
 {
-  "name": "My Protection Market List",
+  "name": "My Market List",
   "timestamp": "2021-09-01T00:00:00+00:00",
   "markets": [
     {
       "chainId": 1,
-      "address": "0x00000000000000000000000000000000000000_0",
+      "address": "0x9affB6D8568cEfa2837d251b1553967430D1a5e5",
       "symbol": "Cozy-USDC-2",
       "name": "Cozy-USDC-2-Yearn USDC V2 Vault Share Price Trigger",
       "decimals": 8,
@@ -27,8 +27,8 @@
     }
   },
   "version": {
-    "major": 1,
-    "minor": 0,
+    "major": 0,
+    "minor": -1,
     "patch": 0
   }
 }

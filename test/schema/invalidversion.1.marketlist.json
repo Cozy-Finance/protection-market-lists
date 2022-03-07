@@ -1,7 +1,19 @@
 {
-  "name": "My Protection Market List",
+  "name": "My Market List",
   "timestamp": "2021-09-01T00:00:00+00:00",
   "markets": [
+    {
+      "chainId": 1,
+      "address": "0xdBDF2fC3Af896e18f2A9DC58883d12484202b57E",
+      "symbol": "cozyUSDC",
+      "name": "Cozy USD Coin",
+      "decimals": 8,
+      "logoURI": "https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_USDC.svg",
+      "tags": ["stablecoin", "money market"],
+      "trigger": "0x0000000000000000000000000000000000000000",
+      "isTriggered": false,
+      "underlying": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+    },
     {
       "chainId": 1,
       "address": "0x9affB6D8568cEfa2837d251b1553967430D1a5e5",
@@ -10,7 +22,7 @@
       "decimals": 8,
       "logoURI": "https://compound.finance/compound-components/assets/asset_YFI.svg",
       "tags": ["stablecoin", "protection market"],
-      "trigger": "0x00000000000000000000000000000000000000_0",
+      "trigger": "0x02E57c5800a345Fe97d73fA8bB72B948E19aA499",
       "isTriggered": false,
       "underlying": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
     }
@@ -27,8 +39,8 @@
     }
   },
   "version": {
-    "major": 1,
+    "major": 0,
     "minor": 0,
-    "patch": 0
+    "patch": -1
   }
 }

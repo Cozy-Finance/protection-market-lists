@@ -1,21 +1,22 @@
-# @cozy-finance/protection-market-lists (alpha)
+# @cozy-finance/market-lists (alpha)
 
-This repo is a fork of Uniswap's [token lists](https://github.com/Uniswap/token-lists) which modifies them
-to serve as protection market lists or protected investment lists for the Cozy protocol.
+This repo is a fork of Uniswap's [token lists](https://github.com/Uniswap/token-lists), modified
+to serve as market lists for protected investments using the Cozy protocol.
 
 This content in this repo is a work in progress and should not be used at this time.
 The current state of this repo is below, where `DONE` indicates that all updates for that file
-are complete or no work was needed, and a `todo` indicates that file is still a work in progress.
+are complete or no work was needed, and a `todo` indicates that a file is still a work in progress.
 
 ```
+README.md                                          todo: update references from tokenList to marketList
 src/
-├── diffTokenLists.ts                              todo: update to diff ProtectionMarket Info
+├── diffTokenLists.ts                              todo: update to diff Market Info
 ├── getVersionUpgrade.ts                           DONE
 ├── index.ts                                       DONE
 ├── isVersionUpdate.ts                             DONE
 ├── minVersionBump.ts                              todo: verify this works after diffTokenLists is updated
 ├── nextVersion.ts                                 DONE
-├── protectionmarketlist.schema.json               DONE
+├── marketlist.schema.json               DONE
 ├── types.ts                                       todo: updated with new types, but those types are not yet finalized
 ├── versionComparator.ts                           DONE
 │
@@ -25,7 +26,7 @@ test/
 ├── isVersionUpdate.test.ts                        DONE
 ├── minVersionBump.test.ts                         todo: verify this passes after diffTokenLists is updated
 ├── nextVersion.test.ts                            DONE
-├── protectionmarketlist.schema.test               DONE
+├── marketlist.schema.test               DONE
 ├── types.test.ts                                  DONE
 ├── versionComparator.test.ts                      DONE
 ├── schema/                                        DONE
@@ -33,7 +34,7 @@ test/
 │   ├── bigwords.tokenlist.json
 │   ├── empty.tokenlist.json
 │   ├── example-name-symbol-special-characters.tokenlist.json
-│   ├── example.protectionmarketlist.json          DONE this is the only file in this folder that is done
+│   ├── example.marketlist.json          DONE this is the only file in this folder that is done
 │   ├── exampleminimum.tokenlist.json
 │   ├── extensions-invalid.tokenlist.json
 │   ├── extensions-valid.tokenlist.json
@@ -48,7 +49,7 @@ test/
 │   ├── invalidversion.2.tokenlist.json
 │   ├── invalidversion.3.tokenlist.json
 ├── __snapshots__/                                 DONE
-    ├── protectionmarketlist.schema.test.ts.snap
+    ├── marketlist.schema.test.ts.snap
 ```
 
 # @uniswap/token-lists (beta)
@@ -147,6 +148,6 @@ This is the preferred way of referencing your list.
 
 ## Examples
 
-You can find a simple example of a token list in [test/schema/example.tokenlist.json](test/schema/example.tokenlist.json).
+You can find a simple example of a token list in [test/schema/example.marketlist.json](test/schema/example.marketlist.json).
 
-A snapshot of the Uniswap default list encoded as a token list is found in [test/schema/bigexample.tokenlist.json](test/schema/bigexample.tokenlist.json).
+A snapshot of the Uniswap default list encoded as a token list is found in [test/schema/bigexample.marketlist.json](test/schema/bigexample.marketlist.json).

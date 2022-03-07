@@ -1,6 +1,6 @@
 {
-  "name": "My Protection Market List",
-  "timestamp": "abc",
+  "name": "My Market List",
+  "timestamp": "2021-09-01T00:00:00+00:00",
   "markets": [
     {
       "chainId": 1,
@@ -18,7 +18,7 @@
   "tokens": {
     "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48": {
       "chainId": 1,
-      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "address": "0x00000000000000000000000000000000000000_0",
       "symbol": "USDC",
       "name": "USD Coin",
       "decimals": 6,
