@@ -1,5 +1,5 @@
 {
-  "name": "My Protection Market List",
+  "name": "My Market List",
   "timestamp": "2021-09-01T00:00:00+00:00",
   "markets": [
     {
@@ -24,7 +24,14 @@
       "tags": ["stablecoin", "protection market"],
       "trigger": "0x02E57c5800a345Fe97d73fA8bB72B948E19aA499",
       "isTriggered": false,
-      "underlying": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+      "underlying": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "extensions": {
+        "abc": "1234",
+        "def": 1234,
+        "isBoolean": false,
+        "isNull": null,
+        "justRightAddress": "0x0000000000000000000000000000000000000001"
+      }
     }
   ],
   "tokens": {
@@ -35,12 +42,19 @@
       "name": "USD Coin",
       "decimals": 6,
       "logoURI": "https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_USDC.svg",
-      "tags": ["stablecoin"]
+      "tags": ["stablecoin"],
+      "extensions": {
+        "abc": "1234",
+        "def": 1234,
+        "isBoolean": false,
+        "isNull": null,
+        "justRightAddress": "0x0000000000000000000000000000000000000001"
+      }
     }
   },
   "version": {
-    "major": 0,
+    "major": 1,
     "minor": 0,
-    "patch": -1
+    "patch": 0
   }
 }

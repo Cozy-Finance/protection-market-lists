@@ -1,5 +1,5 @@
 {
-  "name": "My Protection Market List",
+  "name": "My Market List",
   "timestamp": "2021-09-01T00:00:00+00:00",
   "markets": [
     {
@@ -7,7 +7,7 @@
       "address": "0xdBDF2fC3Af896e18f2A9DC58883d12484202b57E",
       "symbol": "cozyUSDC",
       "name": "Cozy USD Coin",
-      "decimals": 8,
+      "decimals": 256,
       "logoURI": "https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_USDC.svg",
       "tags": ["stablecoin", "money market"],
       "trigger": "0x0000000000000000000000000000000000000000",
@@ -24,14 +24,7 @@
       "tags": ["stablecoin", "protection market"],
       "trigger": "0x02E57c5800a345Fe97d73fA8bB72B948E19aA499",
       "isTriggered": false,
-      "underlying": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-      "extensions": {
-        "abc": "1234",
-        "def": 1234,
-        "isBoolean": false,
-        "isNull": null,
-        "justRightAddress": "0x0000000000000000000000000000000000000001"
-      }
+      "underlying": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
     }
   ],
   "tokens": {
@@ -42,14 +35,7 @@
       "name": "USD Coin",
       "decimals": 6,
       "logoURI": "https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_USDC.svg",
-      "tags": ["stablecoin"],
-      "extensions": {
-        "abc": "1234",
-        "def": 1234,
-        "isBoolean": false,
-        "isNull": null,
-        "justRightAddress": "0x0000000000000000000000000000000000000001"
-      }
+      "tags": ["stablecoin"]
     }
   },
   "version": {

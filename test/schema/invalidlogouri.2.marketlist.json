@@ -1,5 +1,5 @@
 {
-  "name": "My Protection Market List",
+  "name": "My Market List",
   "timestamp": "2021-09-01T00:00:00+00:00",
   "markets": [
     {
@@ -8,7 +8,7 @@
       "symbol": "cozyUSDC",
       "name": "Cozy USD Coin",
       "decimals": 8,
-      "logoURI": "https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_USDC.svg",
+      "logoURI": "ipfs://hello-world",
       "tags": ["stablecoin", "money market"],
       "trigger": "0x0000000000000000000000000000000000000000",
       "isTriggered": false,
@@ -33,8 +33,8 @@
       "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
       "symbol": "USDC",
       "name": "USD Coin",
-      "decimals": -1,
-      "logoURI": "https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_USDC.svg",
+      "decimals": 6,
+      "logoURI": "hello",
       "tags": ["stablecoin"]
     }
   },
