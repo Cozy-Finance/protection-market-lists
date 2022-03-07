@@ -17,7 +17,7 @@ src/
 ├── minVersionBump.ts                              todo: verify this works after diffTokenLists is updated
 ├── nextVersion.ts                                 DONE
 ├── marketlist.schema.json               DONE
-├── types.ts                                       todo: updated with new types, but those types are not yet finalized
+├── types.ts                                       DONE
 ├── versionComparator.ts                           DONE
 │
 test/
