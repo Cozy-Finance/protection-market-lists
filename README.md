@@ -16,7 +16,7 @@ src/
 ├── isVersionUpdate.ts                             DONE
 ├── minVersionBump.ts                              todo: verify this works after diffTokenLists is updated
 ├── nextVersion.ts                                 DONE
-├── marketlist.schema.json               DONE
+├── marketlist.schema.json                         DONE
 ├── types.ts                                       DONE
 ├── versionComparator.ts                           DONE
 │
@@ -26,28 +26,28 @@ test/
 ├── isVersionUpdate.test.ts                        DONE
 ├── minVersionBump.test.ts                         todo: verify this passes after diffTokenLists is updated
 ├── nextVersion.test.ts                            DONE
-├── marketlist.schema.test               DONE
+├── marketlist.schema.test                         DONE
 ├── types.test.ts                                  DONE
 ├── versionComparator.test.ts                      DONE
 ├── schema/                                        DONE
-│   ├── bigexample.tokenlist.json
-│   ├── bigwords.tokenlist.json
-│   ├── empty.tokenlist.json
-│   ├── example-name-symbol-special-characters.tokenlist.json
-│   ├── example.marketlist.json          DONE this is the only file in this folder that is done
-│   ├── exampleminimum.tokenlist.json
-│   ├── extensions-invalid.tokenlist.json
-│   ├── extensions-valid.tokenlist.json
-│   ├── invalidNumTags.tokenlist.json
-│   ├── invaliddecimals.1.tokenlist.json
-│   ├── invaliddecimals.2.tokenlist.json
-│   ├── invalidlogouri.1.tokenlist.json
-│   ├── invalidlogouri.2.tokenlist.json
-│   ├── invalidtimestamp.tokenlist.json
-│   ├── invalidtokenaddress.tokenlist.json
-│   ├── invalidversion.1.tokenlist.json
-│   ├── invalidversion.2.tokenlist.json
-│   ├── invalidversion.3.tokenlist.json
+│   ├── bigexample.marketlist.json
+│   ├── bigwords.marketlist.json
+│   ├── empty.marketlist.json
+│   ├── example-name-symbol-special-characters.marketlist.json
+│   ├── example.marketlist.json                    DONE this is the only file in this folder that is done
+│   ├── exampleminimum.marketlist.json
+│   ├── extensions-invalid.marketlist.json
+│   ├── extensions-valid.marketlist.json
+│   ├── invalidNumTags.marketlist.json
+│   ├── invaliddecimals.1.marketlist.json
+│   ├── invaliddecimals.2.marketlist.json
+│   ├── invalidlogouri.1.marketlist.json
+│   ├── invalidlogouri.2.marketlist.json
+│   ├── invalidtimestamp.marketlist.json
+│   ├── invalidtokenaddress.marketlist.json
+│   ├── invalidversion.1.marketlist.json
+│   ├── invalidversion.2.marketlist.json
+│   ├── invalidversion.3.marketlist.json
 ├── __snapshots__/                                 DONE
     ├── marketlist.schema.test.ts.snap
 ```
