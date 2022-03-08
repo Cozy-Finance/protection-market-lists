@@ -111,7 +111,7 @@
           "type": "string"
         },
         "signature": {
-          "pattern": "^function\\sdivest\\(.*\\).*(external\\spayable|external)",
+          "pattern": "^function\\sdivest\\(.*\\).*(external|public)",
           "type": "string"
         }
       },
@@ -128,7 +128,7 @@
           "pattern": "^0x[a-fA-F0-9]{40}$"
         },
         "signature": {
-          "pattern": "^function\\sinvest\\(.*\\).*(external\\spayable|external)",
+          "pattern": "^function\\sinvest\\(.*\\).*(external|public)",
           "type": "string"
         }
       },
