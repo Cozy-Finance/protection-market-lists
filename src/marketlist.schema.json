@@ -42,7 +42,7 @@
       "minLength": 1,
       "maxLength": 30,
       "pattern": "^[\\w ]+$",
-      "examples": ["yearn", "stablecoin", "money market", "market"]
+      "examples": ["yearn", "stablecoin", "money market", "protection market"]
     },
     "ExtensionIdentifier": {
       "type": "string",
@@ -106,7 +106,7 @@
       "description": "Parameters of the contract containing a `divest` method to exit an investment opportunity",
       "properties": {
         "address": {
-          "description": "Address of the contract containing the invest logic",
+          "description": "Address of the contract containing the divest logic",
           "pattern": "^0x[a-fA-F0-9]{40}$",
           "type": "string"
         },
