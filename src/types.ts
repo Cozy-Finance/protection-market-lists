@@ -26,32 +26,21 @@ export interface InvestmentOpportunity {
 }
 
 // Parameters for investing into a protected investment.
-//
-// Example  'function invest(uint256[] calldata amounts) external payable'
-//
-//  The `tokens` property defines the  set of input tokens that can be used to deposit into this investment opportunity.
-// The items in the function signature correspond to these `tokens`. For example, if we're investing in the 3Crypto pool,
-// the `tokens` array would be [ETH, WBTC, USDT]. When calling `invest` on `address`, amounts[0] would correspond to the
-// amount of ETH to invest, amounts[1] would correspond to the amount of WBTC to invest, etc. An amount of MAX_UINT256
-// should be used to signal that you want to invest all tokens you have
+// Example sig: 'function invest(address market, uint256 amount) external payable'
 export interface InvestScript {
   readonly address: string;
   readonly signature: string;
 }
 
 // Parameters for exiting a protected investment.
-//
-// Function signature meaning is analogous to `InvestScript`. The `amounts` and `claimRewards` parameters are uint256
-// where zero means don't withdraw/claim anything and MAX_UINT256 means withdraw/claim all. Note that not all
-// reward tokens will support arbitrary claim amounts. The `recipient` field specifies the address all output
-// tokens and reward tokens should be sent to
+// Example sig: 'function divest(address market, address recipient, uint256 redeemAmount, uint256 minAmountOut) external payable'
 export interface DivestScript {
   readonly address: string;
   readonly signature: string;
 }
 
 export interface StrategyLeg {
-  readonly action: 'Borrow' | 'Swap to' | 'Deposit for' | 'Deposit to' | 'Stake on';
+  readonly action: 'Borrow' | 'Deposit for' | 'Deposit to' | 'Stake on' | 'Swap to';
   readonly actionReceiver: string;
   readonly logoURI?: string;
   readonly platformId: number; // Platform ID of strategy target
@@ -72,7 +61,7 @@ export interface MarketList {
 export interface MarketInfo extends TokenInfo {
   readonly investmentOpportunity?: InvestmentOpportunity; // details on how protected investing using this market
   readonly trigger: string; // trigger contract address for protection markets, or zero address for money markets
-  readonly underlying: string; // address of underlying, if `underlying === 0xEeee....EEeE`, underlying is ETH
+  readonly underlying: string; // address of underlying, if `underlying === 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE`, underlying is ETH
 }
 
 export interface TokenInfo {
