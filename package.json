@@ -1,7 +1,7 @@
 {
-  "name": "@uniswap/token-lists",
-  "author": "Moody Salem",
-  "description": "📚 The Token Lists specification",
+  "name": "market-lists",
+  "author": "Cozy Engineering",
+  "description": "Cozy Markets Lists specification",
   "version": "1.0.0-beta.25",
   "license": "MIT",
   "main": "dist/index.js",
@@ -14,7 +14,7 @@
     "node": ">=10"
   },
   "repository": {
-    "url": "https://github.com/Uniswap/token-lists",
+    "url": "https://github.com/Cozy-Finance/market-lists",
     "type": "git"
   },
   "scripts": {
@@ -38,7 +38,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "module": "dist/token-lists.esm.js",
+  "module": "dist/market-lists.esm.js",
   "devDependencies": {
     "ajv": "^8.6.1",
     "ajv-formats": "^2.1.0",
